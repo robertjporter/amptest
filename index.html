@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+	<meta name="description" content="">
+	<meta name="author" content="">
+
+	<title>AMP super calculator</title>
+
+	<!-- Bootstrap core CSS -->
+	<link href="css/bootstrap.css" rel="stylesheet">
+	
+	<!-- Font Awesome CSS-->
+	<link href="css/font-awesome.css" rel="stylesheet">
+	
+	<!-- SASS compiled CSS -->
+	<link href="css/main.css" rel="stylesheet"> 
+	
+	<!-- Bootstrap core JavaScript-->
+    <script src="js/jquery-3.2.1.min.js"></script>
+	<script src="js/bootstrap.js"></script>
+	
+	<!--Google chart (download library and add to js folder if there is time)-->
+	 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+</head>
+<body>
+	<script>
+		// Add Body text for options
+		var rangeHeaderValues = {
+			"0": "Cash",
+			"1": "Conservative",
+			"2": "Cautious",
+			"3": "Moderatly Conservative",
+			"4": "Balanced",
+			"5": "Moderatly Aggressive",
+			"6": "Aggressive"
+		};
+	
+		// Add Body text for options
+		var rangeTextValues = {
+			"0": "Your aim is to achieve competitive cash based returns before fees and taxes by investing in a wholesale deposit with an Australian bank.",
+			"1": "Your aim is for returns primarily from income as well as some capital growth over the short to medium term. Investments are mainly in defensive assets with some exposure to growth assets. Suggested minimum investment timeframe is 3 or more years.",
+			"2": "Your aim is for returns primarily from income as well as some capital growth over the short to medium term. Investments are mainly in defensive assets with some exposure to a diversified range of growth assets.",
+			"3": "Your aim is for moderate returns from a balance of income and capital growth over the medium to long term. Investments are a diversified mix of growth and defensive assets.",
+			"4": "Your aim is for moderate to higher returns primarily from capital growth with some income over the long term. Investments are across all asset types, with higher exposure to growth assets.",
+			"5": "Your main objective is to accumulate assets by targeting capital growth over the medium to long-term. You are prepared to accept higher volatility and moderate risks to achieve these returns.",
+			"6": "Your main objective is to achieve high long-term growth. Capital stability is not a concern as you are prepared to accept high volatility to pursue potentially greater long-term returns. Investment choices are diverse but carry with them a higher level of risk."
+		};
+
+		$(function () {
+			// on page load, set the data of the labels based the value of the range
+			$('#rangeHeader').text(rangeHeaderValues[$('#rangeInput').val()]);
+			$('#rangeText').text(rangeTextValues[$('#rangeInput').val()]);
+
+			// setup an event handler to set the text when the range value is dragged or changed
+			$('#rangeInput').on('input change', function () {
+				$('#rangeHeader').text(rangeHeaderValues[$(this).val()]);
+				$('#rangeText').text(rangeTextValues[$(this).val()]);
+			});
+		});
+		
+		//------------------------------- GOOGLE PIE CHART ---------------------------------
+		google.charts.load('current', {'packages':['corechart']});
+		google.charts.setOnLoadCallback(drawChartPie);
+
+		function drawChartPie() {
+		  var profitVar2 = parseInt(document.querySelector('#rangeInput').value);
+		  var other = 5 - profitVar2;
+
+		  var data3 = google.visualization.arrayToDataTable([
+			['Name', 'Profit Percentage'],    
+			['Your Profit Percentage' , profitVar2],
+			['Potential for Growth', other]
+		  ]);
+
+		  var options3 = {
+			height: 100,
+			width: 100,
+			legend: 'none',
+			is3D: true,
+			pieSliceText: 'none',
+			'chartArea': {'width': '100%', 'height': '100%'},
+			slices: {
+				0: { color: '#00a1de' },
+				1: { color: '#c8c8c8' }
+			}
+		  };
+
+		  var chart3 = new google.visualization.PieChart(document.getElementById('chart_divPie'));
+
+		  chart3.draw(data3, options3);
+		}
+	</script>
+	
+	<!---------------------------- HTML---------------------------->
+
+	<div class="primary-div">
+		<!-- Header Div-->
+		<div class="container header2">
+			<span class="header">AMP</span><span>My Super simulator</span>
+		</div>
+		
+		<!-- Body Div-->
+		<div class="container secondary-div">
+			<h1>How is your super currently invested?</h1>
+			<!-- Range Slider-->
+			<input type="range" name="rangeInput" id="rangeInput" value="0" min="0" max="5" onchange="drawChartPie()">
+			
+			<!-- Header output-->
+			<h1 id="rangeHeader"></h1><br>
+			
+			<hr align="center" id="devider">
+		
+			<!-- Graph Output -->
+			<div id="graph_div" class="row">
+				<div id="chart_divPie" class="col-md-3 col-sm-2 col-xs-6"></div>
+				
+				<div id="graphStats" class="col-md-3 col-sm-2 col-xs-6">
+					<p>Growth Assets: <b>45%</b></p>
+					<p>Defensive Assets: <b>65%</b></p>
+					<p>Relative Risk: <b>Medium</b></p>
+				</div>
+				
+				<!-- Text Output-->
+				<div id="textHolder" class="col-md-6 col-sm-8 col-xs-12">
+					<span id="rangeText"></span>
+				</div>
+			</div>
+			<div class="container lowerNav">
+				<button id="back" class="btn-basic btn-lg">Back</button>
+				<button id="next" class="btn-primary btn-lg">Next</button>
+			</div>
+		</div>
+		
+	</div>
+</body>
+</html>
+

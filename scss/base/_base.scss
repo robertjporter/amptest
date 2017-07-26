@@ -1,0 +1,175 @@
+/*RANGE SLIDER*/
+/* mostly just fiddled the settings right*/
+input[type=range] {
+	-webkit-appearance: none;
+	margin: 10px auto;
+	max-width: 574px;
+}
+input[type=range]:focus {
+	outline: none;
+}
+input[type=range]::-webkit-slider-runnable-track {
+	width: 100%;
+	height: 12.8px;
+	cursor: pointer;
+	animate: 0.2s;
+	box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d;
+	background: #c8c8c8;
+	border-radius: 25px;
+	border: 0px solid #000101;
+}
+input[type=range]::-webkit-slider-thumb {
+	box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d;
+	border: 0px solid #000000;
+	height: 20px;
+	width: 39px;
+	border-radius: 7px;
+	background: #00a1de;
+	cursor: pointer;
+	-webkit-appearance: none;
+	margin-top: -3.6px;
+}
+input[type=range]:focus::-webkit-slider-runnable-track {
+	background: #c8c8c8;
+}
+input[type=range]::-moz-range-track {
+	width: 100%;
+	height: 12.8px;
+	cursor: pointer;
+	animate: 0.2s;
+	box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d;
+	background: #c8c8c8;
+	border-radius: 25px;
+	border: 0px solid #000101;
+}
+input[type=range]::-moz-range-thumb {
+	box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d;
+	border: 0px solid #000000;
+	height: 20px;
+	width: 39px;
+	border-radius: 7px;
+	background: #00a1de;
+	cursor: pointer;
+}
+input[type=range]::-ms-track {
+	width: 100%;
+	height: 12.8px;
+	cursor: pointer;
+	animate: 0.2s;
+	background: transparent;
+	border-color: transparent;
+	border-width: 39px 0;
+	color: transparent;
+}
+input[type=range]::-ms-fill-lower {
+	background: #c8c8c8;
+	border: 0px solid #000101;
+	border-radius: 50px;
+	box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d;
+}
+input[type=range]::-ms-fill-upper {
+	background: #c8c8c8;
+	border: 0px solid #000101;
+	border-radius: 50px;
+	box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d;
+}
+input[type=range]::-ms-thumb {
+	box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d;
+	border: 0px solid #000000;
+	height: 20px;
+	width: 39px;
+	border-radius: 7px;
+	background: #00a1de;
+	cursor: pointer;
+}
+input[type=range]:focus::-ms-fill-lower {
+	background: #c8c8c8;
+}
+input[type=range]:focus::-ms-fill-upper {
+	background: #c8c8c8;
+}
+
+
+
+/* BODY BLOCK STYLING */
+body{
+	text-align: center;
+	height:100%;
+	width:100%;
+}
+
+
+
+#graph_div{
+	max-width: 900px;
+	text-align: center;
+	margin:0 auto;
+}
+
+#devider{
+	max-width: 900px;
+	margin: 5px;
+}
+
+#back{
+	left:0px;
+	width: 120px;
+}
+#next{
+	right:0px;
+	width: 120px;
+}
+
+.lowerNav{
+	bottom:20px;
+	left: 0px;
+	width: 100%;
+	position:absolute;
+	margin: 0 auto;
+}
+
+/* GRAPH FIX*/
+#chart_divPie{
+}
+/* TEXT STYLING */
+h1{
+	color: #003478;
+	text-align: center;
+	margin: 40px auto;
+}
+.header{
+	color: #003478;
+	font-size: 24px;
+	text-align: left;
+}
+.header2{
+	text-align: left;
+}
+
+span{
+	font-size: 16px;
+}
+
+p{
+	font-size: 16px;
+}
+/* MEDIA QUERIES */
+@media screen and (max-width: 480px) {
+    .primary-div {
+        height: 100%;
+    }
+	h1{
+		font-size: 22px;
+		margin: 20px auto;
+	}
+	span{
+		font-size: 14px;
+	}
+
+	p{
+		font-size: 14px;
+	}
+
+	
+}
+
